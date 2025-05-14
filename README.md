@@ -1,4 +1,4 @@
-## About
+# Rooms service
 
 The `rooms` service will manage discussions between players inside rooms, contained in subjects.
 
