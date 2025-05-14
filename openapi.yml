@@ -1,0 +1,122 @@
+openapi: 3.0.4
+info:
+  title: Arena API - OpenAPI 3.0
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: https://swagger.io
+servers:
+  - url: https://rooms.thefirstspine.fr
+tags:
+  - name: subjects
+    description: Operations related to subjects
+paths:
+  /subjects:
+    get:
+      tags:
+        - subjects
+      summary: Get available subjects
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subject'
+  /subjects/:subjectId:
+    get:
+      tags:
+        - subjects
+      summary: Get details of a subject
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subject'
+  /subjects/:subjectId:/rooms:
+    get:
+      tags:
+        - subjects
+      summary: Get available rooms for a subject
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Room'
+    post:
+      tags:
+        - subjects
+      summary: Create a new room for a subject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                senders:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      displayName:
+                        type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Room'
+  /subjects/:subjectId:/rooms/:roomId:
+    get:
+      tags:
+        - subjects
+      summary: Get details of a room
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+
+components:
+  schemas:
+    Subject:
+      type: object
+      properties:
+        name:
+          type: string
+    Room:
+      type: object
+      properties:
+        name:
+          type: string
+        subject:
+          type: string
+        timestamp:
+          type: integer
+        senders:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              displayName:
+                type: string
