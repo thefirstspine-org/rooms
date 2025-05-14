@@ -4,29 +4,30 @@ The `rooms` service will manage discussions between players inside rooms, contai
 
 ## Installation
 
-```bash
-$ npm install
+```
+npm ci
 ```
 
 ## Running the app
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+npm run start
 ```
 
-## License
+## Build & run for production
 
-Nest is [MIT licensed](LICENSE).
+```
+npm run build
+node dist/main.js
+```
 
-TFS Platform is NOT licensed. You are free to download, view, run the repository. You are NOT allowed to redistribute this project for both commercial and non-commercial use. Deal with it.
+## Configuration
 
-## About Nest
+See the configuration keys with the [Ansible playbook](https://github.com/thefirstspine/ansible/blob/master/volume/playbooks/deploy-rooms.yaml)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+To help you configure your local environment to generate a dotenv file you can use the [configurator](https://github.com/thefirstspine/configurator) using this command:
+
+```
+node configurator.js create rooms --conf-path [local copy of ansible volume]/conf --force-http true
+```
+
