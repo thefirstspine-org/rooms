@@ -153,7 +153,7 @@ jobs:
                 pg_username: '${{ secrets.ansible_conf_pg_username_prod }}'
                 private_key: '{{ lookup("file", "/volume/keys/rooms-private.key") }}'
                 messaging_public_key: "{{ lookup('file', '/volume/keys/messaging-public.cert') }}"
-                service_auth_domain: 'prod.auth.thefirstspine.fr'
+                service_auth_domain: 'auth.thefirstspine.fr'
                 subjects: 'arena'
                 # Host settings
                 external_port: 8080
